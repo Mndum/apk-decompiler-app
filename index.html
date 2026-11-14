@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APK Decompiler Studio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand-mark">A</div>
+      <div><p class="eyebrow">LOCAL ANDROID TOOLKIT</p><h1>APK Decompiler Studio</h1></div>
+      <span class="privacy"><span class="dot"></span> Files stay on this device</span>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">INSPECT AN ANDROID PACKAGE</p>
+      <h2>Understand what’s inside your APK.</h2>
+      <p class="muted">Run JADX and APKTool locally to recover code, resources, and manifest information.</p>
+    </section>
+
+    <section class="card form-card">
+      <div class="field">
+        <label for="apkPath">APK file</label>
+        <div class="input-row"><input id="apkPath" placeholder="Choose an .apk file…" readonly><button id="browseApk" class="button secondary">Browse</button></div>
+      </div>
+      <div class="field">
+        <label for="outputDir">Output folder</label>
+        <div class="input-row"><input id="outputDir" placeholder="Choose where the results will be saved…" readonly><button id="browseOutput" class="button secondary">Choose</button></div>
+      </div>
+      <div class="actions">
+        <button id="decompile" class="button primary">Decompile APK <span aria-hidden="true">→</span></button>
+        <span id="status" class="status">Ready when you are</span>
+      </div>
+    </section>
+
+    <section class="tools-row" aria-label="Tool status">
+      <div class="tool-card"><span class="tool-icon">J</span><div><strong>JADX</strong><small id="jadxStatus">Checking…</small></div><span class="tool-indicator" id="jadxDot"></span></div>
+      <div class="tool-card"><span class="tool-icon purple">A</span><div><strong>APKTool</strong><small id="apktoolStatus">Checking…</small></div><span class="tool-indicator" id="apktoolDot"></span></div>
+      <div class="tool-card"><span class="tool-icon green">☕</span><div><strong>Java</strong><small id="javaStatus">Checking…</small></div><span class="tool-indicator" id="javaDot"></span></div>
+    </section>
+
+    <section class="card log-card">
+      <div class="log-heading"><div><p class="eyebrow">ACTIVITY</p><h3>Decompilation log</h3></div><button id="clearLog" class="text-button">Clear log</button></div>
+      <pre id="log" aria-live="polite">Select an APK and an output folder to get started.\n</pre>
+    </section>
+    <footer>Decompilation is approximate. Obfuscation, missing symbols, and native code may limit recovered source.</footer>
+  </main>
+  <script src="renderer.js"></script>
+</body>
+</html>
